@@ -4,6 +4,6 @@
 #}
 variable "AWS_SECRET_ACCESS_KEY" {
   description = "The AWS secret access key"
-  type        = GDmJWCsAd+IkAveKpQyL5Kx/Tvcws+6pvZuUS6Bx
+  type        = string
   sensitive   = true # Mark as sensitive to prevent display in logs
 }
