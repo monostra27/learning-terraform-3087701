@@ -43,7 +43,7 @@ module "blob_sg" {
   egress_cidr_blocks = ["0.0.0.0/0"]
 }
 
-
+<#
 resource "aws_security_group" "blob" {
   name = "blob"
   description = "Allow http and https in. Allow everything out"
@@ -80,3 +80,4 @@ resource "aws_security_group_rule" "blob_everything_out" {
 
   security_group_id = aws_security_group.blob.id
 }
+#>
