@@ -14,7 +14,7 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
-module "blob_vpc" {  ##"vpc_blob"
+module "vpc_blob" {
   source = "terraform-aws-modules/vpc/aws"
 
   name = "dev"
@@ -32,11 +32,11 @@ module "blob_vpc" {  ##"vpc_blob"
   }
 }
 
-resource "aws_instance" "blob_vcp" {
+resource "aws_instance" "blob" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type   ##t 2.micro  ##"t3.nano" t3.micro"
 
-  vpc_security_group_ids = [module.blob_vpc.security_group_id]  ##aws_security_group.blob.id   ##module.blob_sg.security_group_id
+  vpc_security_group_ids = [module.blob_sg.security_group_id]  ##aws_security_group.blob.id
 
   subnet_id = module.blob_vpc.public_subnets[0]
 
@@ -45,7 +45,7 @@ resource "aws_instance" "blob_vcp" {
   }
 }
 
-module "blob_vcp" {
+module "blob_sg" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "5.3.1"
   name = "blob"
