@@ -46,7 +46,7 @@ module "blob_sg" {
 
 resource "aws_security_group" "blob" {
   name = "blob"
-  description = "Allow http and https in. Allow everthing out"
+  description = "Allow http and https in. Allow everything out"
 
   vpc_id = data.aws_vpc.default.id
 }
