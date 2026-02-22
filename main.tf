@@ -45,7 +45,7 @@ resource "aws_instance" "blob" {
   }
 }
 
-module "blob_sg" {
+module "blob_vcp {
   source  = "terraform-aws-modules/security-group/aws"
   version = "5.3.1"
   name = "blob"
