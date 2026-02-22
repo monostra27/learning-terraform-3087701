@@ -29,7 +29,7 @@ resource "aws_instance" "blob" {
   }
 }
 
-resource "aws_secuirty_group" "blob" {
+resource "aws_security_group" "blob" {
   name = "blob"
   description = "Allow http and https in. Allow everthing out"
 
