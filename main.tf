@@ -36,7 +36,7 @@ resource "aws_instance" "blob" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type   ##t 2.micro  ##"t3.nano" t3.micro"
 
-  vpc_security_group_ids = [module.blob_vpc.security_group_id]  ##aws_security_group.blob.id
+  #vpc_security_group_ids = [module.blob_vpc.security_group_id]  ##aws_security_group.blob.id
 
   subnet_id = module.blob_vpc.public_subnets[0]
 
