@@ -14,8 +14,8 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
-module "vpc_blob" {
-  source = "terraform-aws-modules/vpc/aws"
+module "vcp_blob" {
+  source = "terraform-aws-modules/vcp/aws"
 
   name = "dev"
   cidr = "10.0.0.0/16"
@@ -36,9 +36,9 @@ resource "aws_instance" "blob" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type   ##t 2.micro  ##"t3.nano" t3.micro"
 
-  vpc_security_group_ids = [module.blob_sg.security_group_id]  ##aws_security_group.blob.id
+  vcp_security_group_ids = [module.blob_sg.security_group_id]  ##aws_security_group.blob.id
 
-  subnet_id = module.blob_vpc.public_subnets[0]
+  subnet_id = module.blob_vcp.public_subnets[0]
 
   tags = {
     Name = "HelloWorld"
@@ -50,7 +50,7 @@ module "blob_sg" {
   version = "5.3.1"
   name = "blob"
 
-  vpc_id = module.blob_vcp.vcp.id
+  vcp_id = module.blob_vcp.vcp.id
 
   ingress_rules       = ["http-80-tcp","https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
