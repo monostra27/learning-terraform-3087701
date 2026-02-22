@@ -33,7 +33,7 @@ resource "aws_security_group" "blob" {
   name = "blob"
   description = "Allow http and https in. Allow everthing out"
 
-  vpc_id = data.aws_vpc.defaukt.id
+  vpc_id = data.aws_vpc.default.id
 }
 
 resource "aws_security_group_rule" "blob_http_in" {
