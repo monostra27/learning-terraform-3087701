@@ -32,7 +32,7 @@ module "blob_vpc" {  ##"vpc_blob"
   }
 }
 
-resource "aws_instance" "blob" {
+resource "aws_instance" "blob_vcp" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type   ##t 2.micro  ##"t3.nano" t3.micro"
 
@@ -45,7 +45,7 @@ resource "aws_instance" "blob" {
   }
 }
 
-module "blob_sg" {
+module "blob_vcp" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "5.3.1"
   name = "blob"
